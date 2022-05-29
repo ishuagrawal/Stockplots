@@ -1,0 +1,63 @@
+body {
+	margin: 0;
+}
+
+#row {
+	display: flex;
+	justify-content:space-between;
+	margin-top: 2%;
+}
+
+#login-content {
+	flex: 50%;
+}
+
+#login {
+	padding-left: 30%;
+	padding-top: 10%;
+}
+
+#login p {
+	margin-top: 5%;
+}
+
+#login-button {
+	margin-top: 30px;
+	color: white;
+	background-color: #b5180d;
+	border: none;
+
+	border-radius: 3px;
+	width: 415px;
+	height: 35px;
+	cursor:pointer;
+}
+
+#register {
+	flex: 50%;
+}
+
+#register-content p {
+	margin-top: 5%;
+}
+
+#register-button {
+	margin-top: 30px;
+	color: white;
+	background-color: #b5180d;
+	border: none;
+
+	border-radius: 3px;
+	width: 415px;
+	height: 35px;
+	cursor:pointer;
+}
+
+#error {
+	text-align: center;
+	background-color: lightcoral;
+	font-size: 20px;
+	margin: 0;
+	padding-top: 1%;
+	padding-bottom: 1%;
+}

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login / Register</title>
+	<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/auth.css') }}">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+	{% if message %}
+		<p id="error">{{ message }}</p>
+	{% endif %}
+    <div id="row">
+    	<div id="login-content">
+    		<form action="/login" id="login" method="POST">
+	        	<h1>Login</h1>
+	        	<p>Email</p>
+		 		<input type="email" id="email-login" name="email-login" size=60% required>
+		 		<p>Password</p>
+		 		<input type="password" id="pwd-login" name="pwd-login" size=60% required>
+		 		<div>
+		 			<button type="submit" id="login-button" form="login" value="Submit"><i class="fa fa-sign-in"></i> Sign in</button>
+		 		</div>
+    		</form>
+        </div>
+
+		<form action="/register" id="register" method="POST">
+	    	<div id="register-content">
+	   			<h1>Register</h1>
+		    	<p>Email</p>
+		    	<input type="email" id="email-register" name="email-register" size=60% required>
+		    	<p>Name</p>
+		    	<input type="text" id="name-register" name="name-register" size=60% required>
+			 	<p>Password</p>
+			 	<input type="password" id="pwd-register" name="pwd-register" size=60% required>
+			 	<p>Confirm Password</p>
+			 	<input type="password" id="pwd-confirm" name="pwd-confirm" size=60% required>
+	    	</div>
+	    	<div>
+	    		<button type="submit" id="register-button" form="register" value="Submit"><i class="fa fa-solid fa-user-plus"></i> Create Account</button>
+	    	</div>
+    	</form>
+    </div>
+</body>
+</html>

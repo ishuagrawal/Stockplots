@@ -1,0 +1,62 @@
+body {
+	margin: 0;
+}
+
+#search-row {
+	margin-left: 2%;
+}
+
+#myTab {
+	margin-top: 4%;
+	width: 40%;
+}
+
+#search-form {
+	margin-top: 1%;
+}
+
+#speculate-form {
+	margin-top: 1%;
+}
+
+#logout-button {
+	margin-top: 30px;
+	color: white;
+	background-color: #b5180d;
+	border: none;
+
+	border-radius: 3px;
+	width: 415px;
+	height: 35px;
+	cursor:pointer;
+}
+
+.search-button {
+	margin-top: 1%;
+	color: white;
+	background-color: #b5180d;
+	border: none;
+
+	border-radius: 3px;
+	width: 225px;
+	height: 35px;
+	cursor:pointer;
+}
+
+#error {
+	text-align: center;
+	background-color: lightcoral;
+	font-size: 20px;
+	margin: 0;
+	padding-top: 1%;
+	padding-bottom: 1%;
+}
+
+#output {
+	margin-top: 3%;
+	padding: 1%;
+}
+
+#right {
+	padding-left: 5%;
+}

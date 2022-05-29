@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/home.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+	{% if message %}
+		<p id="error">{{ message }}</p>
+	{% endif %}
+
+    <div id="search-row">
+        <form action="/logout" id="logout" method="POST">
+            <div>
+                <button type="submit" id="logout-button" form="logout" value="Submit"><i class="fa fa-power-off"></i> Logout</button>
+            </div>
+        </form>
+
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="search-tab" data-bs-toggle="tab" data-bs-target="#search" type="button" role="tab" aria-controls="search" aria-selected="true">Search</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="speculate-tab" data-bs-toggle="tab" data-bs-target="#speculate" type="button" role="tab" aria-controls="speculate" aria-selected="false">Speculate</button>
+            </li>
+        </ul>
+
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="search" role="tabpanel" aria-labelledby="search-tab">
+                <form action="/search" id="search-form" method="POST">
+                    <h1>Search</h1>
+                    <p>Enter a stock ticker and choose a date to see its closing price.</p>
+                    <input type="text" class="ticker" name="ticker" size="10" placeholder="AAPL" required>
+                    <input type="date" class="date" name="date" min="2010-01-04" max="2016-12-30" required>
+                    <div>
+                        <button type="submit" class="search-button" form="search-form" value="Submit"><i class="fa fa-search"></i> Search</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="tab-pane fade" id="speculate" role="tabpanel" aria-labelledby="speculate-tab">
+                <form action="/speculate" id="speculate-form" method="POST">
+                    <h1>Speculate</h1>
+                    <p>Enter a stock ticker and choose a date to speculate a closing price.</p>
+                    <input type="text" class="ticker" name="ticker" size="10" placeholder="AAPL" required>
+                    <input type="date" class="date" name="date" min="2017-01-02" max="2025-12-30" required>
+                    <div>
+                        <button type="submit" class="search-button" form="speculate-form" value="Submit"><i class="fa fa-search"></i> Speculate</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        {% if ticker %}
+            <div class="card border-primary mb-3" id="output" style="max-width: 800px;">
+                <div class="row g-0">
+                    <div class="col-md-7">
+                        {% if mode == "search" %}
+                        <img src="{{ url_for('fig_search', symbol = ticker, date = date, price = price) }}" class="img-fluid rounded-start" alt="Image Placeholder">
+
+                        {% else %}
+                        <img src="{{ url_for('fig_speculate', symbol = ticker, date = date, price = price) }}" class="img-fluid rounded-start" alt="Image Placeholder">
+                        {% endif %}
+                    </div>
+                    <div class="col-md-5" id="right">
+                        <div class="card-body">
+                            {% if mode == "search" %}
+                            <h5 class="card-title">{{ticker}}</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">{{company}}</h6>
+                            <p class="card-text"><b>Sector:</b> {{sector}}</p>
+                            <p class="card-text"><b>Closing price:</b> {{price}}</p>
+                            <p class="card-text"><b>Volume:</b> {{volume}}
+                            <p class="card-text"><small class="text-muted">Price and volume as of {{date}}</small>
+
+                            {% else %}
+                            <h5 class="card-title">{{ticker}}</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">{{company}}</h6>
+                            <p class="card-text"><b>Sector:</b> {{sector}}</p>
+                            <p class="card-text"><b>Predicted price:</b> {{price}}</p>
+                            <p class="card-text"><small class="text-muted">Price predicted for {{date}}</small>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+
+    <script src="{{url_for('static', filename='home.js')}}"></script>
+</body>
+</html>
