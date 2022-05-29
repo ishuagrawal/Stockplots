@@ -12,7 +12,7 @@
     * Flask
     * scikit-learn
     * pandas
-4. Run the program
+4. Run `app_starter.py`
 
 ## Next Steps:
 I plan to improve this webapp by the following ways: 
